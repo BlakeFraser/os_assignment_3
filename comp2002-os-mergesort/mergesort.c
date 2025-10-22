@@ -63,14 +63,39 @@ void my_mergesort(int left, int right){
 
 /* this function will be called by the testing program.
 void * parallel_mergesort(void *arg){
-        return NULL;
+    struct argument *args = malloc(sizeof(struct argument));
+    int left = args->left;
+    int right = args->right;
+    int level = args->level;
+
+    int mid = (left+right)/2;
+    struct argument *leftArgs = buildArgs(left, mid, level-1);
+    struct argument *rightArgs = buildArgs(mid, right, level-1);
+    // u gotta make this bullshit recursive
+
+
+
+
+
+    free(args);
+
+    return NULL;
 }
 */
 
 
-/* we build the argument for the parallel_mergesort function.
+/* we build the argument for the parallel_mergesort function. */
 struct argument * buildArgs(int left, int right, int level){
-        return NULL;
+    struct argument *args = malloc(sizeof(struct argument)); // dynamically allocates memory for structure args
+    if (args == NULL) {
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(1);
+    }
+    // Establishes variables that return to a pointer
+    args->left = left;
+    args->right = right;
+    args->level = level;
+    
+    return args; // returns pointer args to the calling funciton (parallel_mergesort)
 }
-*/
 
