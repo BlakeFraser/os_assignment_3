@@ -4,7 +4,7 @@
 
 
 int main() {
-    struct argument *testArgs = buildArgs(0, 99, 3);
+    struct argument *testArgs = buildArgs(0, 33, 3);
 
     printf("Left: %d\n", testArgs->left);
     printf("Right: %d\n", testArgs->right);
