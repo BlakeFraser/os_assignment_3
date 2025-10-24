@@ -44,11 +44,11 @@ void merge(int leftstart, int leftend, int rightstart, int rightend){
 /* this function will be called by parallel_mergesort() as its base case. */
 void my_mergesort(int left, int right){
     if(left>=right)  {
-    return; //base case
-}
+        return; //base case
+    }   
 
 
- int middpoint= (left+right)/2;
+ int middpoint = (left+right)/2;
 
 
  //Recursively sort both halves
@@ -61,19 +61,58 @@ void my_mergesort(int left, int right){
 }
 
 
-/* this function will be called by the testing program.
+/* this function will be called by the testing program. */
 void * parallel_mergesort(void *arg){
-    struct argument *args = malloc(sizeof(struct argument));
+    struct argument *args = (struct argument *) arg;
+
+    //pull args out by typecasting void* arg
+
     int left = args->left;
     int right = args->right;
     int level = args->level;
 
+
+    //handling base case
+    if (left >= right) {
+        free(args);
+        return NULL;
+    }
+
+
     int mid = (left+right)/2;
-    struct argument *leftArgs = buildArgs(left, mid, level-1);
-    struct argument *rightArgs = buildArgs(mid, right, level-1);
-    // u gotta make this bullshit recursive
+
+    //stop creating new threads when level is 0 or less
+    if (level <= 0) {
+        my_mergesort(left, right);
+        free(args);
+        return NULL;
+    }
 
 
+    //if we are going to spawn threads for each half, generate arguments for both halves
+
+    struct argument *leftArgs = buildArgs(left, mid, level - 1);
+    struct argument *rightArgs = buildArgs(mid + 1, right, level - 1);
+
+
+    //create left and right threads.
+
+    pthread_t leftThread, rightThread;
+
+
+
+    //start thread workers recursively
+
+    pthread_create(&leftThread, NULL, parallel_mergesort, (void *)leftArgs);
+    pthread_create(&rightThread, NULL, parallel_mergesort, (void *)rightArgs);
+
+
+
+    //wait in parent until children are finished.
+    pthread_join(leftThread, NULL);
+    pthread_join(rightThread, NULL);
+
+    merge(left, mid, mid + 1, right);
 
 
 
@@ -81,7 +120,7 @@ void * parallel_mergesort(void *arg){
 
     return NULL;
 }
-*/
+
 
 
 /* we build the argument for the parallel_mergesort function. */
