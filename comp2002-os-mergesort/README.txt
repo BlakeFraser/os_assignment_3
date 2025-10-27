@@ -32,15 +32,20 @@ test_parallel_mergesort.c:
 Tests the multi-threaded functionality of the parallel_mergesort funciton, ensuring variables are handled properly.
 
 test-mergesort.c:
+Test all functionality thoroughly of the algorithm designed in this assignment, taking the input size (in bits), cutoff level and 
+seed. It checks the sorting has been correctly done and the time it is completed in.
 
 ## Building the project
 
-This section should tell the user how to build your code.  If you are
-delivering a library, where does it need to be installed, or how do you use
-it? Is this an executable, if so, how can a user get up to speed as fast as
-possible?
+To build the project ensure gcc and pthreads library are installed and run "make", which compiles all necessary object files and 
+produces the following executable "./test-mergesort". Use for example "./test-mergesort 10000000 3 50" which represents 
+<input size>, <cutoff level> and <seed>, to clean up the object files use "make clean". Other testing files were used to debug 
+and test code per iteration of the assignment.
 
 ## Features and usage
+
+Main Features:
+Parallel sorting and stable merging, with a thread safe design.
 
 Summarise the main features of your program. It is also appropriate to
 instruct the user how to use your program.
