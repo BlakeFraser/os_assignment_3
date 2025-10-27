@@ -47,11 +47,14 @@ and test code per iteration of the assignment.
 Main Features:
 Parallel sorting and stable merging, with a thread safe design.
 
+
 Summarise the main features of your program. It is also appropriate to
 instruct the user how to use your program.
 
 ## Testing
 
+Testing was conducted using multiple test files, firstly mergesorttest.c was used to verify the sorting algorithm 
+test_buildargs.c
 This section should detail how you tested your code. Simply stating "I ran
 it a few times and it seems to work" is not sufficient. Your testing needs
 to be detailed here.

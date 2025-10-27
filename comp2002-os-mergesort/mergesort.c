@@ -74,7 +74,7 @@ void * parallel_mergesort(void *arg){
 
     //handling base case
     if (left >= right) {
-        free(args);
+        //free(args);
         return NULL;
     }
 
