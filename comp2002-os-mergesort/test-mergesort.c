@@ -11,10 +11,10 @@
 int cutoff = 0;
 
 /* the array we want to sort */
-int *A;
+int *A = NULL;
 
 /* when merge, we need a temp array (named B) to temporarily store elements of the original array */
-int *B;
+int *B = NULL;
 
 // function prototypes
 int check_if_sorted(int A[], int n);

@@ -9,8 +9,8 @@
 #include "mergesort.h"
 
 
-int *A;
-int *B;
+extern int *A;
+extern int *B;
 /* this function will be called by mergesort() and also by parallel_mergesort(). */
 void merge(int leftstart, int leftend, int rightstart, int rightend){
     int index_left = leftstart;
@@ -84,7 +84,7 @@ void * parallel_mergesort(void *arg){
     //stop creating new threads when level is 0 or less
     if (level <= 0) {
         my_mergesort(left, right);
-        free(args);
+        //free(args);
         return NULL;
     }
 
@@ -112,11 +112,14 @@ void * parallel_mergesort(void *arg){
     pthread_join(leftThread, NULL);
     pthread_join(rightThread, NULL);
 
+    free(leftArgs);
+    free(rightArgs);
+
     merge(left, mid, mid + 1, right);
 
 
 
-    free(args);
+    //free(args);
 
     return NULL;
 }
