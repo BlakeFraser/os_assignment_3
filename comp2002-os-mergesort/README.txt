@@ -53,18 +53,19 @@ instruct the user how to use your program.
 
 ## Testing
 
-Testing was conducted using multiple test files, firstly mergesorttest.c was used to verify the sorting algorithm 
-test_buildargs.c
-This section should detail how you tested your code. Simply stating "I ran
-it a few times and it seems to work" is not sufficient. Your testing needs
-to be detailed here.
+Testing was conducted using multiple test files, firstly mergesorttest.c was used to verify the basic merge sorting algorithm for 
+a variety of different array lengths with a wide range of values. Next the buildargs architecture was tested to ensure it could 
+validate argument creation and memory allocation, this was tested in the file test_buildargs.c. parallel mergesort testing was 
+conducted in test_parallel_mergesort.c which tested multi-threaded recursion, synchronisation and merge integrity. The overall 
+test in teset-mergesort.c combined all functional test with large data arrays to evaluate runtime and correctness.
 
 ## Known Bugs
 
-List known bugs that you weren't able to fix (or ran out of time to fix).
+There are no known observable bugs in our code.
 
 ## Reflection and Self Assessment
 
+A common problem was the reoccuring segmentation faults that were developed
 Discuss the issues you encountered during development and testing. What
 problems did you have? What did you have to research and learn on your own?
 What kinds of errors did you get? How did you fix them?
@@ -75,7 +76,8 @@ did the development and testing process go for you?
 
 ## Sources Used
 
-If you used any sources outside of the textbook, you should list them here. 
-If you looked something up on stackoverflow.com or you use help from AI, and 
-fail to cite it in this section, it will be considered plagiarism and dealt 
-with accordingly. So be safe CITE!
+Used for studying the Parallel sort and mergesort algorithms with multi-threading support:
+https://redixhumayun.github.io/systems/2023/12/29/parallel-merge-sort.html
+https://www.geeksforgeeks.org/dsa/merge-sort/
+https://www.geeksforgeeks.org/dsa/merge-sort-using-multi-threading/
+https://stackoverflow.com/questions/63584950/how-to-multithread-the-merge-operation-in-merge-sort
