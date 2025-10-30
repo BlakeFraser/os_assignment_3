@@ -45,11 +45,7 @@ and test code per iteration of the assignment.
 ## Features and usage
 
 Main Features:
-Parallel sorting and stable merging, with a thread safe design.
-
-
-Summarise the main features of your program. It is also appropriate to
-instruct the user how to use your program.
+Parallel sorting and stable merging, with a thread safe design. Refer to building the project to see how to run it.
 
 ## Testing
 
@@ -65,14 +61,16 @@ There are no known observable bugs in our code.
 
 ## Reflection and Self Assessment
 
-A common problem was the reoccuring segmentation faults that were developed
-Discuss the issues you encountered during development and testing. What
-problems did you have? What did you have to research and learn on your own?
-What kinds of errors did you get? How did you fix them?
+A common problem was the reoccuring segmentation faults that were developed because of the incorrect use of thread synchronisation.
+We noticed that global arrays A and B were not secured and were causing some of the issues, however, with correct management of the 
+arrays in each of the files and correct memory mangement these issues were fixed. Threads also were out of sync as they were freed in 
+the merge sort functions in mergesort.c causing race conditions. When the threads were only freed in the struct argument the issue 
+was resolved. These issues were found through thorough testing at each stage as explained above.
 
-What parts of the project did you find challenging? Is there anything that
-finally "clicked" for you in the process of working on this project? How well
-did the development and testing process go for you?
+Issues with thread synchronisation were researched using sites such as stackoverflow and geeksforgeeks where similar issues were 
+resolved. Also understand how pthreads handle void pointers and struct agruments required some additional research, particularly on 
+proper casting and memory allocation with malloc. The thorough testing process help substancially being able to incrementally develop 
+features while ensuring that the backbone of the code was able to be functional.
 
 ## Sources Used
 
@@ -81,3 +79,5 @@ https://redixhumayun.github.io/systems/2023/12/29/parallel-merge-sort.html
 https://www.geeksforgeeks.org/dsa/merge-sort/
 https://www.geeksforgeeks.org/dsa/merge-sort-using-multi-threading/
 https://stackoverflow.com/questions/63584950/how-to-multithread-the-merge-operation-in-merge-sort
+https://www.geeksforgeeks.org/operating-systems/posix-threads-in-os/
+
