@@ -2,7 +2,7 @@ README.template
 
 ## Operating Systems - Assignment 3 Concurrency
 
-* Authors: Sam Toohey (a1886287), Blake Fraser (a1237912738912638), Tom Panopoulos (a12371283)
+* Authors: Sam Toohey (a1886287), Blake Fraser (a1886958), Tom Panopoulos (a1885511)
 
 ## Overview
 
